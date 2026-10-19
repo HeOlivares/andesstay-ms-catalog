@@ -50,6 +50,15 @@ public class UnitService {
 		return toResponse(unitRepository.save(unit));
 	}
 
+	public UnitResponse markUnavailable(Long id) {
+		Unit unit = getOrThrow(id);
+		if (!unit.isAvailable()) {
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "Unit is not available: " + id);
+		}
+		unit.setAvailable(false);
+		return toResponse(unitRepository.save(unit));
+	}
+
 	private Unit getOrThrow(Long id) {
 		return unitRepository.findById(id)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Unit not found: " + id));
