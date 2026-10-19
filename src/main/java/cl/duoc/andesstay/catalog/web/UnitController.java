@@ -59,4 +59,10 @@ public class UnitController {
 	public UnitResponse update(@PathVariable Long id, @Valid @RequestBody UnitRequest request) {
 		return unitService.update(id, request);
 	}
+
+	@PostMapping("/units/{id}/confirmations")
+	@Operation(summary = "Dejar la unidad no disponible al confirmar una reserva")
+	public UnitResponse confirmReservation(@PathVariable Long id) {
+		return unitService.markUnavailable(id);
+	}
 }
