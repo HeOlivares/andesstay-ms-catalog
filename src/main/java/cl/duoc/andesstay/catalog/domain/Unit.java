@@ -31,6 +31,24 @@ public class Unit {
 	@Column(nullable = false)
 	private boolean available = true;
 
+	@Column(length = 1000)
+	private String description;
+
+	@Column(length = 120)
+	private String location;
+
+	private Integer maxGuests;
+
+	@Column(length = 500)
+	private String imageUrl;
+
+	@Column(length = 500)
+	private String amenities;
+
+	private Integer bedrooms;
+
+	private Integer bathrooms;
+
 	@Column(nullable = false, updatable = false)
 	private Instant createdAt;
 
@@ -87,6 +105,62 @@ public class Unit {
 
 	public void setAvailable(boolean available) {
 		this.available = available;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public Integer getMaxGuests() {
+		return maxGuests;
+	}
+
+	public void setMaxGuests(Integer maxGuests) {
+		this.maxGuests = maxGuests;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public String getAmenities() {
+		return amenities;
+	}
+
+	public void setAmenities(String amenities) {
+		this.amenities = amenities;
+	}
+
+	public Integer getBedrooms() {
+		return bedrooms;
+	}
+
+	public void setBedrooms(Integer bedrooms) {
+		this.bedrooms = bedrooms;
+	}
+
+	public Integer getBathrooms() {
+		return bathrooms;
+	}
+
+	public void setBathrooms(Integer bathrooms) {
+		this.bathrooms = bathrooms;
 	}
 
 	public Instant getCreatedAt() {
