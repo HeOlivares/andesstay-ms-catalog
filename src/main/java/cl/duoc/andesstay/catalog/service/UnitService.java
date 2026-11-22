@@ -69,6 +69,21 @@ public class UnitService {
 		unit.setName(request.getName().trim());
 		unit.setRate(request.getRate());
 		unit.setAvailable(Boolean.TRUE.equals(request.getAvailable()));
+		unit.setDescription(blankToNull(request.getDescription()));
+		unit.setLocation(blankToNull(request.getLocation()));
+		unit.setMaxGuests(request.getMaxGuests());
+		unit.setImageUrl(blankToNull(request.getImageUrl()));
+		unit.setAmenities(blankToNull(request.getAmenities()));
+		unit.setBedrooms(request.getBedrooms());
+		unit.setBathrooms(request.getBathrooms());
+	}
+
+	private static String blankToNull(String value) {
+		if (value == null) {
+			return null;
+		}
+		String trimmed = value.trim();
+		return trimmed.isEmpty() ? null : trimmed;
 	}
 
 	private UnitResponse toResponse(Unit unit) {
@@ -78,6 +93,13 @@ public class UnitService {
 				unit.getName(),
 				unit.getRate(),
 				unit.isAvailable(),
+				unit.getDescription(),
+				unit.getLocation(),
+				unit.getMaxGuests(),
+				unit.getImageUrl(),
+				unit.getAmenities(),
+				unit.getBedrooms(),
+				unit.getBathrooms(),
 				unit.getCreatedAt(),
 				unit.getUpdatedAt()
 		);
